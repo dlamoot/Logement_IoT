@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de la Consommation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Éco-Logement</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Consommation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="etat_capteurs">État des Capteurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="economies">Économies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="configuration">Configuration</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Suivi de la Consommation</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Graphique de Consommation</h3>
+                <canvas id="consommationChart" width="400" height="200"></canvas>
+            </div>
+            <div class="col-md-6">
+                <h3>Détails de Consommation</h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Montant (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Électricité</td>
+                            <td>120.50</td>
+                        </tr>
+                        <tr>
+                            <td>Eau</td>
+                            <td>45.30</td>
+                        </tr>
+                        <tr>
+                            <td>Déchets</td>
+                            <td>25.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('consommationChart').getContext('2d');
+        const consommationChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Électricité', 'Eau', 'Déchets'],
+                datasets: [{
+                    label: 'Consommation (en €)',
+                    data: [120.5, 45.3, 25.0],
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+                    borderColor: ['#ff6384', '#36a2eb', '#ffce56'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Consommation par Type'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logement Éco-Responsable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Éco-Logement</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consommation">Consommation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="etat_capteurs">État des Capteurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="economies">Économies Réalisées</a></li>
+                    <li class="nav-item"><a class="nav-link" href="configuration">Configuration</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section principale -->
+    <section class="hero bg-light text-center p-5">
+        <h1>Bienvenue sur votre application de gestion éco-responsable</h1>
+        <p>Suivez votre consommation énergétique, optimisez vos dépenses, et contrôlez vos appareils en un clic !</p>
+        <a href="consommation" class="btn btn-primary btn-lg">Voir la consommation</a>
+    </section>
+
+    <!-- Fonctionnalités dynamiques -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Fonctionnalités Principales</h2>
+        <div class="row">
+            {% for fonction in fonctionnalites %}
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ fonction.titre }}</h5>
+                        <p class="card-text">{{ fonction.description }}</p>
+                        <a href="{{ fonction.lien }}" class="btn btn-primary">Explorer</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Éco-Logement | Conçu par Polytech Sorbonne</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

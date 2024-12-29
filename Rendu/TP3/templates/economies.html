@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Économies Réalisées</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Éco-Logement</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consommation">Consommation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="etat_capteurs">État des Capteurs</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Économies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="configuration">Configuration</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Économies Réalisées</h1>
+        <p class="text-center">Analyse des économies réalisées comparées aux périodes précédentes.</p>
+        <div>
+            <canvas id="economiesChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('economiesChart').getContext('2d');
+        const economiesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+                datasets: [{
+                    label: 'Économies réalisées (€)',
+                    data: [50, 70, 100, 80, 120],
+                    borderColor: '#36a2eb',
+                    tension: 0.4,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Économies Mensuelles'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+Logements : 
+
+curl -X GET http://127.0.0.1:5000/logements
+curl -X GET http://127.0.0.1:5000/logements/1
+
+
+
+Pieces : 
+
+curl -X GET http://127.0.0.1:5000/pieces
+curl -X GET http://127.0.0.1:5000/logements/1/pieces
+
+
+
+Mesures : 
+
+curl -X POST http://127.0.0.1:5000/add_mesures_temperature
+curl -X POST http://127.0.0.1:5000/add_mesures_luminosite
+
+curl -X POST http://127.0.0.1:5000/capteurs_actionneurs/1/mesures -H "Content-Type: application/json" -d '{"valeur": 24.5}'
+curl -X POST http://127.0.0.1:5000/capteurs_actionneurs/2/mesures -H "Content-Type: application/json" -d '{"valeur": 24.5}'
+curl -X POST http://127.0.0.1:5000/capteurs_actionneurs/3/mesures -H "Content-Type: application/json" -d '{"valeur": 24.5}'
+curl -X POST http://127.0.0.1:5000/capteurs_actionneurs/4/mesures -H "Content-Type: application/json" -d '{"valeur": 24.5}'
+
+
+curl -X GET http://127.0.0.1:5000/capteurs_actionneurs/1/mesures
+curl -X GET http://127.0.0.1:5000/capteurs_actionneurs/2/mesures
+curl -X GET http://127.0.0.1:5000/capteurs_actionneurs/3/mesures
+curl -X GET http://127.0.0.1:5000/capteurs_actionneurs/4/mesures
+curl -X GET http://127.0.0.1:5000/mesures/1
+
+
+
+Type capteurs/Actionneurs : 
+
+curl -X GET http://127.0.0.1:5000/types_capteurs_actionneurs
+
+
+
+Capteurs/Actionneurs : 
+
+curl -X GET http://127.0.0.1:5000/capteurs_actionneurs
+curl -X GET http://127.0.0.1:5000/pieces/1/capteurs_actionneurs
+
+
+
+Factures : 
+
+curl -X GET http://127.0.0.1:5000/logements/1/factures
+curl -X GET http://127.0.0.1:5000/factures/1
+curl -X GET http://127.0.0.1:5000/factures_chart/1
+
+curl -X POST http://127.0.0.1:5000/add_factures
+curl -X POST http://127.0.0.1:5000/logements/1/factures -H "Content-Type: application/json" -d '{"type": "Eau", "date_facture": "2024-11-15", "montant": 50.5, "valeur_consommation": 20.0}'
+
+
+Meteo : 
+
+curl -X GET http://127.0.0.1:5000/meteo/Paris
+
+
+
+Multitâche: 
+
+gunicorn -w 4 -b 0.0.0.0:5000 server:app --threads 4
+
